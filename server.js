@@ -18,15 +18,15 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/article1',function(req,res){
-   res.sendFile('Hi u r in article 1'); 
+   res.send('Hi u r in article 1'); 
 });
 
 app.get('/article2',function(req,res){
-   res.sendFile('Hi u r in article 2'); 
+   res.send('Hi u r in article 2'); 
 });
 
 app.get('/article3',function(req,res){
-   res.sendFile('Hi u r in article 3'); 
+   res.send('Hi u r in article 3'); 
 });
 
 
