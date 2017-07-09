@@ -5,13 +5,14 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var content= {
+var content = {
     
-    
-    title:'Article1|Anitha A V',
-    heading:'Article1',
-    date:'July 3 2017',
-    content:`<p>
+    article1: {
+        
+       title:'Article1|Anitha A V',
+       heading:'Article1',
+       date:'July 3 2017',
+       content:`<p>
                 Hi this is anitha...
                 Hi this is anitha...Hi this is anitha...
                 Hi this is anitha...Hi this is anitha...
@@ -28,7 +29,57 @@ var content= {
                  Hi this is anitha...
                 Hi this is anitha...Hi this is anitha...
                 Hi this is anitha...Hi this is anitha...
-            </p>`,
+            </p>`
+        
+    },
+  article2: {
+        
+       title:'Article2|Anitha A V',
+       heading:'Article2',
+       date:'July 4 2017',
+       content:`<p>
+              Menucard
+            </p>
+            <ol>
+                <li>
+                    Dosa
+                </li>
+                <li>
+                    Idly
+                </li>
+            </ol>
+            <p>
+                 Hi this is anitha...
+                Hi this is anitha...Hi this is anitha...
+                Hi this is anitha...Hi this is anitha...
+            </p>`
+        
+    },  
+    article3: {
+        
+       title:'Article3|Anitha A V',
+       heading:'Article3',
+       date:'July 7 2017',
+       content:`<p>
+              Menucard
+            </p>
+            <ol>
+                <li>
+                    Haleem
+                </li>
+                <li>
+                    Roast
+                </li>
+            </ol>
+            <p>
+                 Hi this is anitha...
+                Hi this is anitha...Hi this is anitha...
+                PISTA HOUSE
+            </p>`
+        
+    } 
+    
+   
     
 };
 function createTemplate(data){
@@ -77,17 +128,12 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/article1',function(req,res){
-  res.send(createTemplate(content));
+app.get('/:articlename',function(req,res){
+    articlename=res.params.articlename;
+  res.send(createTemplate(content(articlename)));
 });
 
-app.get('/article2',function(req,res){
-   res.send('Hi u r in article 2'); 
-});
 
-app.get('/article3',function(req,res){
-   res.send('Hi u r in article 3'); 
-});
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
