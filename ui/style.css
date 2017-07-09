@@ -19,4 +19,10 @@ body {
 .img-medium {
     height: 200px;
 }
+.Ani{
+                max-width:800px;
+                margin :auto;
+                color:red;
+                font-family:sans-serif;
+            }
 
