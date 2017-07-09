@@ -5,6 +5,66 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var content= {
+    
+    
+    title:'Article1|Anitha A V',
+    heading:'Article1',
+    date:'July 3 2017',
+    content:`<p>
+                Hi this is anitha...
+                Hi this is anitha...Hi this is anitha...
+                Hi this is anitha...Hi this is anitha...
+            </p>
+            <ol>
+                <li>
+                    Dosa
+                </li>
+                <li>
+                    Idly
+                </li>
+            </ol>
+            <p>
+                 Hi this is anitha...
+                Hi this is anitha...Hi this is anitha...
+                Hi this is anitha...Hi this is anitha...
+            </p>`,
+    
+};
+function createTemplate(data){
+    var title=data.title;
+    var heading=data.heading;
+    var date=data.date;
+    var content=data.content;
+var htmltemplate=`
+<html>
+    <head>
+        <title>
+            ${title}
+        </title>
+    </head>
+    <body>
+        <div>
+            <a href="/">HOME</a>
+        </div>
+        
+        <hr>
+        <h3>
+            ${heading}
+        </h3>
+       <link href="/ui/style.css" rel="stylesheet" />
+        <div>
+            ${date}
+        </div>
+        <div class='Ani'>
+           ${content}
+        </div>
+    </body>
+</html>
+
+`;
+return htmltemplate;
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -18,7 +78,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/article1',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article1.html'));
+  res.send(createTemplate(content));
 });
 
 app.get('/article2',function(req,res){
